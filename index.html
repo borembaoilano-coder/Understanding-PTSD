@@ -113,6 +113,21 @@
             font-weight: bold;
             margin: 0;
         }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3949ab;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
     </style>
 
 </head>
@@ -260,5 +275,18 @@
         <p style="font-size: 0.8em;"><strong>Disclaimer:</strong> This website is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing severe distress, please seek help from a licensed mental health professional or contact a crisis hotline.</p>
         <p>© 2026 PTSD Awareness Advocacy | All Rights Reserved</p>
     </footer>
+
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">&#8593;</button>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var button = document.getElementById('back-to-top');
+            if (window.pageYOffset > 100) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
