@@ -28,9 +28,9 @@
 
         header {
             background-color: #5c6bc0;
-            background-image: url('https://media.istockphoto.com/id/1315630429/photo/close-up-top-view-of-young-and-freshness-energy-business-people-putting-their-strong-hands.jpg?s=2048x2048&w=is&k=20&c=8y1IbrH69ADNXCpf-pbVEdIV-h-EHMgorBo7jLyDfgY=');
+            background-image: url('https://images.unsplash.com/photo-1702047109910-43af92894dc1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
-            background-position: center;
+            background-position: 0px -400px; 
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -169,19 +169,30 @@
 
         #back-to-top {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #3949ab;
+            background-color: #87ceeb;
             color: #fff;
             border: none;
+            padding: 0;
             border-radius: 50%;
             width: 50px;
             height: 50px;
             font-size: 24px;
+            line-height: 50px;
             cursor: pointer;
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 999;
+            transition: all 200ms ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        #back-to-top:hover {
+            background-color: #5dade2;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         #our-platforms {
@@ -460,6 +471,18 @@
                 bottom: 16px;
                 left: 50%;
                 transform: translateX(-50%);
+            }
+
+            /* Center paragraphs on mobile, excluding specific sections */
+            .section p {
+                text-align: center;
+            }
+            .references p,
+            footer p,
+            header p,
+            .section ul,
+            .section li {
+                text-align: left;
             }
         }
     </style>
