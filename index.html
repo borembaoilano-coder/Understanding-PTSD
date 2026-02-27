@@ -253,7 +253,8 @@
         }
         .ptsd-content-wrapper {
             display: flex;
-            align-items: flex-start;
+            /* align the children by their bottom edges so the text bubble lines up with the image bottom */
+            align-items: flex-end;
             gap: 20px;
             flex-wrap: wrap;
         }
@@ -268,7 +269,8 @@
             flex: 1 1 280px;
             text-align: center;
             align-self: flex-start;
-            margin-top: -100px; /* lift image to align with heading */
+            /* negative margin to lift image until its top lines up with the section header */
+            margin-top: -60px;
         }
         .section-ptsd .image-container img {
             max-width: 100%;
@@ -331,6 +333,11 @@
             flex: 1 1 280px;
             text-align: center;
             align-self: flex-start;
+            /* white bubble behind the image */
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 12px;
+            display: inline-block; /* shrink-wrap to image size */
         }
         .resources-image-container img {
             max-width: 100%;
@@ -466,7 +473,7 @@
                     </ul>
                 </div>
                 <div class="image-container">
-                    <img src="https://media.istockphoto.com/id/1409478894/vector/woman-having-panic-attack-ptsd-phobias-fears-paranoia.jpg?s=1024x1024&w=is&k=20&c=N88_KquFhtsKA3wKixnk8WHmB8L4PzqA22mlk7qNwj4=" alt="Woman having panic attack">
+                    <img src="https://i.imgur.com/fGg43z6.png" alt="Woman having panic attack">
                 </div>
             </div>
         </div>
@@ -511,7 +518,7 @@
             </div>
         </div>
         <div class="section-divider-image">
-            <img src="https://media.istockphoto.com/id/1198209725/vector/psychology-communication-depression-speech-bubble-therapy-concept.jpg?s=1024x1024&w=is&k=20&c=iM3vwJEyIHlacLYbaYiFwe6hUiCtuDcg9DiVQ-Mz-c4=" alt="Psychology and therapy communication">
+            <img src="https://i.imgur.com/FbHO0Pj.png" alt="Psychology and therapy communication">
         </div>
 <div id="health-info" class="section section-content">
     <h2 class="section-header">🩺 Health Information</h2>
@@ -582,9 +589,7 @@
     </ul>
     </div>
     <div class="resources-image-container">
-        <div style="position: relative; width: 100%; height: 0; padding-top: 75.0000%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
-            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://www.canva.com/design/DAHCiOjL1uo/ZxA-_zTl7iIL1gdbnqmwCw/view?embed" scrolling="no"></iframe>
-        </div>
+        <img src="https://i.imgur.com/vBds6qa.png" alt="Hotlines graphic" style="max-width:100%; border-radius:8px; margin-top:1.6em; margin-bottom:0.9em;" />
     </div>
     </div>
 </div>
