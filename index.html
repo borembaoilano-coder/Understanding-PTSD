@@ -332,12 +332,13 @@
         /* mobile-friendly: stack resources and image vertically */
         @media (max-width: 600px) {
             .resources-content-wrapper {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: column !important;
+                align-items: center !important;
             }
             .resources-bubble,
             .resources-image-container {
-                width: 100%;
+                width: 100% !important;
+                flex: none !important;
             }
             .resources-image-container {
                 margin-top: 0;
