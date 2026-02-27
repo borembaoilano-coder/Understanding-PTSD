@@ -90,6 +90,20 @@
             transform: translateY(-2px);
         }
 
+        /* Active state for scroll highlighting (visible on all devices) */
+        nav a.active {
+            background-color: #5c6bc0;
+            border-bottom: 3px solid #fff;
+        }
+
+        /* Hide hover effect on mobile, keep active state */
+        @media (max-width: 600px) {
+            nav a:hover {
+                background-color: #3949ab;
+                transform: none;
+            }
+        }
+
         .container {
             width: 80%;
             margin: auto;
@@ -729,12 +743,41 @@
     <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">&#8593;</button>
 
     <script>
+        // Back-to-top button functionality
         window.addEventListener('scroll', function() {
             var button = document.getElementById('back-to-top');
             if (window.pageYOffset > 100) {
                 button.style.display = 'block';
             } else {
                 button.style.display = 'none';
+            }
+        });
+
+        // Scroll-based active navigation highlighting
+        const sections = document.querySelectorAll('[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all nav links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to the corresponding nav link
+                    const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        // Observe all sections
+        sections.forEach(section => {
+            if (section.id) {
+                observer.observe(section);
             }
         });
     </script>
