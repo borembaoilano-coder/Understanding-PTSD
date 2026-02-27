@@ -339,15 +339,21 @@
         @media (max-width: 600px) {
             .resources-content-wrapper {
                 flex-direction: column !important;
-                align-items: center !important;
+                align-items: stretch !important;
             }
             .resources-bubble,
             .resources-image-container {
                 width: 100% !important;
                 flex: none !important;
+                box-sizing: border-box !important;
             }
             .resources-image-container {
                 margin-top: 0;
+                display: block !important;
+                max-width: 100% !important;
+            }
+            .resources-image-container img {
+                max-width: 100% !important;
             }
         }
         .resources-image-container {
