@@ -247,6 +247,17 @@
             gap: 8px;
         }
 
+        /* ensure icons and text inside platform buttons are vertically aligned */
+        .platform-content .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .platform-content .link-button img {
+            vertical-align: middle;
+            display: block;
+        }
+
         .center {
             text-align: center;
         }
@@ -339,6 +350,69 @@
             border-radius: 8px;
             margin: 8px auto; /* center bubble in section */
             transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+        }
+        /* support section interactive items */
+        .support-list {
+            list-style: none; /* we'll style each manually */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .support-item {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+        .support-item .prompt {
+            font-weight: bold;
+            display: inline-block;
+            padding: 12px 20px;
+            background: #e3f2fd;
+            border-radius: 20px;
+            color: #333;
+            transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+            border: 2px solid rgba(92, 107, 192, 0.3);
+        }
+        .support-item .prompt:hover {
+            background: #bbdefb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(92, 107, 192, 0.3);
+        }
+        .support-item .info img {
+            width: 80px;
+            height: 100%;
+            min-height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .support-item .info {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 10px);
+            z-index: 100;
+            /* no width so that bubble is sized by content but we impose limits */
+            min-width: 500px; /* adjust this value to be larger than the prompt bubble if needed */
+            max-width: 600px; /* control maximum width here */
+            background: #f9f9f9;
+            padding: 10px 14px;
+            border-radius: 8px;
+            color: #333;
+            font-size: 0.95em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: opacity 200ms ease;
+            align-items: center;
+            gap: 10px;
+            white-space: normal;
+        }
+        .support-item:hover .info,
+        .support-item.active .info {
+            display: flex;
         }
         .content-bubble:hover {
             background: #f0f0f0;
@@ -652,13 +726,25 @@
     </ul>
 </div>
         <div id="support" class="section section-content">
-            <h2 class="section-header">❤️ How to Support Someone with PTSD</h2>
+            <h2 class="section-header">💛 How to Support Someone with PTSD</h2>
             <p class="center">Support can make a big difference for someone living with PTSD. You can:</p>
-            <ul class="center">
-                <li>Listen without judgment</li>
-                <li>Encourage professional help</li>
-                <li>Be patient and empathetic</li>
-                <li>Educate yourself about PTSD</li>
+            <ul class="center support-list">
+                <li class="support-item">
+                    <span class="prompt">Listen Without Judgement</span>
+                    <div class="info"><img src="https://i.imgur.com/JwOJYNp.png" alt="Listen without judgment">Allow them to express their thoughts and feelings freely. Avoid interrupting, offering unsolicited advice, or minimizing their experiences. Sometimes, just being heard can be incredibly healing.</div>
+                </li>
+                <li class="support-item">
+                    <span class="prompt">Encourage Professional Help</span>
+                    <div class="info"><img src="https://i.imgur.com/3RRck6v.png" alt="Encourage professional help">Gently suggest therapy, counseling, or support groups if they are open to it. Professional guidance can provide tools and coping strategies that friends and family alone cannot.</div>
+                </li>
+                <li class="support-item">
+                    <span class="prompt">Be Patient and Empathetic</span>
+                    <div class="info"><img src="https://i.imgur.com/cITA3pJ.png" alt="Be patient and empathetic">Recovery from PTSD often takes time, and progress can be non-linear. Show understanding, avoid pressuring them to "get over it," and celebrate small steps forward.</div>
+                </li>
+                <li class="support-item">
+                    <span class="prompt">Educate Yourself About PTSD</span>
+                    <div class="info"><img src="https://i.imgur.com/9WC1h9a.png" alt="Educate yourself about PTSD">Learn about common symptoms, triggers, and effective coping strategies. Being informed helps you provide thoughtful support, reduces misunderstandings, and strengthens your ability to help.</div>
+                </li>
             </ul>
             <button onclick="alert('Thank you for advocating awareness!')">Join the Advocacy</button>
         </div>
@@ -726,7 +812,7 @@
     <h2 class="section-header">🌐 Our Platforms</h2>
     <p class="platform-header">💛 Connect with us through our Facebook page and interactive guide to learn more about PTSD and help spread awareness 💛</p>
     <p class="platform-content">
-        <a href="https://bit.ly/4tPBLH0" class="link-button" target="_blank" rel="noopener">Facebook Page</a>
+        <a href="https://bit.ly/4tPBLH0" class="link-button" target="_blank" rel="noopener"><img src="https://cdn.iconscout.com/icon/free/png-512/free-facebook-logo-icon-svg-download-png-1350125.png?f=webp&w=512" alt="Facebook" style="width: 35px; height: 35px; margin-right: 8px; margin-top: 15px; display: inline-block; vertical-align: middle;"> Facebook Page</a>
         <a href="https://www.canva.com/design/DAHB8pJRlqQ/L6XLQbyJlEea7Tit4fuWkg/view?utm_content=DAHB8pJRlqQ&utm_campaign=designshare&utm_medium=link&utm_source=viewer" class="link-button" target="_blank" rel="noopener">Interactive Guide</a>
     </p>
 </div>
@@ -803,6 +889,16 @@
             if (section.id) {
                 observer.observe(section);
             }
+        });
+
+        // Support-item toggle on mobile
+        const supportItems = document.querySelectorAll('.support-item');
+        supportItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (isMobile) {
+                    item.classList.toggle('active');
+                }
+            });
         });
     </script>
 </body>
