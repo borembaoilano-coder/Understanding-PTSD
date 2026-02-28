@@ -56,8 +56,16 @@
             color: #000; /* darker for readability */
             text-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
             margin: 0;
+        }   
+                 
+        /* Mobile view - screens smaller than 768px */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 48px; /* bigger on mobile */
+                text-shadow: 0 6px 12px rgba(255, 255, 255, 0.6); /* stronger glow */
+            }
         }
-
+        
         .header-section {
             text-align: center; /* center both bubbles */
             padding: 20px 0;
