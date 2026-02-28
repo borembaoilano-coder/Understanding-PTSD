@@ -650,12 +650,15 @@
 
             /* mobile override */
             @media (max-width: 600px) {
-    .           support-item .info {
+                .support-item .info {
                     position: static;
                     transform: none;
                     width: 100%;
+                    max-width: 100%;
                     margin-top: 10px;
-                    box-sizing: border-box;
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 10px 12px;
                 }
             }
         }x
