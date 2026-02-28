@@ -393,12 +393,12 @@
             display: none;
             position: absolute;
             top: 100%;
-            left: 50%;
-            transform: translate(-50%, 10px);
+            left: 0;
+            transform: translateY(10px);
             z-index: 100;
             /* no width so that bubble is sized by content but we impose limits */
             min-width: 500px; /* adjust this value to be larger than the prompt bubble if needed */
-            max-width: 600px; /* control maximum width here */
+            max-width: calc(100vw - 10px); /* control maximum width here */
             background: #f9f9f9;
             padding: 10px 14px;
             border-radius: 8px;
@@ -409,17 +409,22 @@
             align-items: center;
             gap: 10px;
             white-space: normal;
+            pointer-events: none;
         }
         .support-item .info {
-            flex-direction: column !important;
-            min-width: 280px; /* smaller min-width for mobile */
-            max-width: 90vw; /* use viewport width on mobile */
-            left: 50%;
-            transform: translate(-50%, 10px);
+            flex-direction: row !important;
+            min-width: 500px; /* smaller min-width for mobile */
+            max-width: calc(100vw - 10px); /* use viewport width on mobile */
+            left: 0;
+            transform: translateY(10px);
         }
         .support-item .info img {
-            width: 100%;
+            width: 120px;
             height: auto;
+            min-height: 100%;
+            object-fit: cover;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
         .support-item:hover .info,
         .support-item.active .info {
@@ -639,6 +644,36 @@
                 box-sizing: border-box;
                 margin: 8px 0;
                 padding: 10px 18px; /* keep existing padding */
+            }
+
+            /* Mobile support item bubbles - stack vertically */
+            .support-item .info {
+                flex-direction: column !important;
+                min-width: auto !important;
+                max-width: calc(100vw - 5px) !important;
+                align-items: left !important;
+                text-align: center !important;
+            }
+
+            .support-item .info img {
+                width: 80px !important;
+                height: 80px !important;
+                margin: 0 auto 8px auto !important;
+            }
+
+            .support-item {
+                text-align: left !important;
+            }
+
+            /* Add this for list bubble on mobile: */
+            .support-item .prompt {
+                padding: 10px 15px !important;           /* Adjust padding */
+                font-size: 0.95em !important;            /* Adjust text size */
+                background: #e3f2fd !important;          /* Change background color */
+                border-radius: 15px !important;          /* Adjust roundness */
+                display: block !important;               /* Make it full width or block */
+                width: auto !important;                  /* Full width option */
+                text-align: left !important;           /* Center the text */
             }
         }
 
@@ -907,8 +942,16 @@
         // Support-item toggle on mobile
         const supportItems = document.querySelectorAll('.support-item');
         supportItems.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (event) => {
                 if (isMobile) {
+                    event.stopPropagation();
+                    // Close all other items
+                    supportItems.forEach(other => {
+                        if (other !== item) {
+                            other.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
                     item.classList.toggle('active');
                 }
             });
