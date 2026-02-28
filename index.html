@@ -410,6 +410,19 @@
             gap: 10px;
             white-space: normal;
         }
+        /* mobile-friendly: smaller bubble */
+        @media (max-width: 600px) 
+        .support-item .info {
+            flex-direction: column !important;
+            min-width: 280px; /* smaller min-width for mobile */
+            max-width: 90vw; /* use viewport width on mobile */
+            left: 50%;
+            transform: translate(-50%, 10px);
+        }
+        .support-item .info img {
+            width: 100%;
+            height: auto;
+        }
         .support-item:hover .info,
         .support-item.active .info {
             display: flex;
