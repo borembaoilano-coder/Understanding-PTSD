@@ -903,23 +903,6 @@
             });
         });
 
-        const supportItems = document.querySelectorAll('.support-item');
-
-        supportItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                if (isMobile) {
-                    e.stopPropagation();
-
-                    // Close others
-                    supportItems.forEach(i => {
-                        if (i !== item) i.classList.remove('active');
-                    });
-
-                    item.classList.toggle('active');
-                }
-            });
-        });
-
         // Optional: clicking anywhere else closes all on mobile
         document.addEventListener('click', () => {
             if (isMobile) {
