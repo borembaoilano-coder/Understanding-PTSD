@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTSD - www.understandingptsd.com</title>
-    <!-- Google font import -->
+    <title>Sa Likod Ng Pangalan, May Tunay Na Laban: Do We Truly Understand PTSD?</title>
+    <!-- Google font imports -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Calendas+Plus&display=swap" rel="stylesheet">
+    <!-- Lovelo Line Bold from CDNFonts -->
+    <link href="https://fonts.cdnfonts.com/css/lovelo" rel="stylesheet">
 
     <style>
         
@@ -24,9 +27,12 @@
 
         html {
             scroll-behavior: smooth;
+            /* always show vertical scrollbar to prevent layout shift when scrolling */
+            overflow-y: scroll;
         }
 
         header {
+            font-family: 'Calendas Plus', serif;
             background-color: #5c6bc0;
             background-image: url('https://images.unsplash.com/photo-1702047109910-43af92894dc1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
@@ -43,6 +49,13 @@
             gap: 10px; /* space between bubbles */
             padding: 20px;
         }
+        .header-subtext {
+            font-family: 'Calendas Plus', serif;
+            font-style: italic;
+            font-size: 1.1em;
+            color: #000; /* darker for readability */
+            margin: 0;
+        }
 
         .header-section {
             text-align: center; /* center both bubbles */
@@ -50,6 +63,7 @@
         }
 
         .header-bubble {
+            font-family: 'Calendas Plus', serif;
             background-color: rgba(255, 255, 255, 0.5); /* white with 60% opacity */
             color: #333;
             display: inline-block;
@@ -78,10 +92,14 @@
         }
 
         nav a {
+            display: inline-block; /* make background hug content */
+            font-family: 'Lovelo', sans-serif;
             color: #fff;
-            padding: 14px 20px;
+            padding: 6px 12px; /* smaller padding */
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 300; /* light weight */
+            background-color: rgba(0,0,0,0.2); /* subtle backdrop behind text */
+            border-radius: 4px;
             transition: background-color 200ms ease, transform 200ms ease;
         }
 
@@ -683,8 +701,9 @@
 <body>
 <header>
     <div class="header-container">
-        <h1 class="header-bubble">Understanding PTSD: Awareness & Advocacy</h1>
-        <p class="feature-bubble">Learn, Support, Empower Those Affected</p>
+        <p class="header-subtext">Behind The Label, There's A True Struggle: Do We Truly Understand PTSD?</p>
+        <h1 class="header-bubble">Sa Likod Ng Pangalan, May Tunay Na Laban: Do We Truly Understand PTSD?</h1>
+        <p class="feature-bubble">Understanding PTSD: Awareness & Advocacy</p>
     </div>
 </header>
 
@@ -883,8 +902,8 @@
         <h2>References:</h2>
         <ul>
             <li>Shang, Z., Pan, X., Cheng, S., Yang, Y., Yan, W., Sun, L., Huang, H., Bai, Y., Xie, W., & Xu, S. (2024). Prevalence and risk factors of PTSD symptoms: A 3-month follow-up study. Therapeutic Advances in Psychopharmacology, 14, Article 20451253241298816.</li>
-            <li>Chambliss, T., Hsu, J.‑L., & Chen, M.‑L. (2024). Post‑traumatic stress disorder in veterans: A concept analysis. Behavioral Sciences, 14(6), 485. https://doi.org/10.3390/bs14060485</li>
-            <li>Emery, R. E. (2026, January 21). Post-traumatic stress disorder. Encyclopædia Britannica. https://www.britannica.com/science/post-traumatic-stress-disorder</li>
+            <li>Chambliss, T., Hsu, J.‑L., & Chen, M.‑L. (2024). Post‑traumatic stress disorder in veterans: A concept analysis. Behavioral Sciences, 14(6), 485. <a href="https://doi.org/10.3390/bs14060485" target="_blank" rel="noopener">https://doi.org/10.3390/bs14060485</a></li>
+            <li>Emery, R. E. (2026, January 21). Post-traumatic stress disorder. Encyclopædia Britannica. <a href="https://www.britannica.com/science/post-traumatic-stress-disorder" target="_blank" rel="noopener">https://www.britannica.com/science/post-traumatic-stress-disorder</a></li>
         </ul>
     </div>
 
@@ -942,7 +961,7 @@
         // Support-item toggle on mobile
         const supportItems = document.querySelectorAll('.support-item');
         supportItems.forEach(item => {
-            item.addEventListener('click', (event) => {
+            const toggleItem = (event) => {
                 if (isMobile) {
                     event.stopPropagation();
                     // Close all other items
@@ -954,7 +973,9 @@
                     // Toggle current item
                     item.classList.toggle('active');
                 }
-            });
+            };
+            item.addEventListener('click', toggleItem);
+            item.addEventListener('dblclick', toggleItem);
         });
 
         // Optional: clicking anywhere else closes all on mobile
